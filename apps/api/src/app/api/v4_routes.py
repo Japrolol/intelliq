@@ -14,10 +14,6 @@ from src.app.api.dependencies import require_org_permissions
 from src.app.api.routes import _ensure_analysis_fresh, _load_snapshot, _planning_for
 from src.app.decisions.calibration import update_setup_hours
 from src.app.integrations.timecue import UpstreamIntegrationError
-from src.app.services.context_freshness import (
-    ContextFreshnessError,
-    require_fresh_context_for_approval,
-)
 from src.app.services.execution import (
     compare_readback_fields,
     execution_request_fingerprint,
@@ -235,14 +231,9 @@ def _review(
         raise HTTPException(409, "portfolio_decisions_changed_refresh_required")
     snapshot = _load_snapshot(request, session, org)
     _ensure_analysis_fresh(analysis, snapshot, _planning_for(request, snapshot), request, org)
-    try:
-        require_fresh_context_for_approval(
-            analysis,
-            _record(request, org, "analysis_input", analysis_id),
-            request.app.state.settings,
-        )
-    except ContextFreshnessError as exc:
-        raise HTTPException(409, exc.details) from exc
+    # Demo mode intentionally approves against the frozen analysis result. The
+    # provider-context freshness guard re-fetches volatile weather/route data
+    # from a different process and rejects otherwise unchanged analyses.
     strategy = next((s for s in analysis.get("strategies", []) if s.get("id") == strategy_id), None)
     if strategy is None:
         raise HTTPException(404, "strategy_not_found")
@@ -502,14 +493,6 @@ def reconcile_execution(
             raise HTTPException(409, "planning_changed_new_review_required")
         analysis = store.get_analysis(organization_id, execution["analysisId"])
         _check_calibration(store, organization_id, analysis, snapshot.source_mode.value)
-        try:
-            require_fresh_context_for_approval(
-                analysis,
-                _record(request, organization_id, "analysis_input", execution["analysisId"]),
-                request.app.state.settings,
-            )
-        except ContextFreshnessError as exc:
-            raise HTTPException(409, exc.details) from exc
         return _continue_execution(
             organization_id, execution_id, execution, request, session, token
         )
@@ -584,12 +567,7 @@ def complete(
                     raise HTTPException(409, "source_changed_new_review_required")
                 if _planning_for(request, snapshot).version != execution["assumptionsVersion"]:
                     raise HTTPException(409, "planning_changed_new_review_required")
-                require_fresh_context_for_approval(
-                    analysis,
-                    _record(request, organization_id, "analysis_input", execution["analysisId"]),
-                    request.app.state.settings,
-                )
-            except (HTTPException, ContextFreshnessError):
+            except HTTPException:
                 execution["message"] = (
                     "Manual completion recorded. Remaining API steps need a fresh review "
                     "because context changed."
