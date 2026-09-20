@@ -1,0 +1,10 @@
+{
+	admin off
+}
+
+http://intelliq.localhost:8082 {
+	@api path /api/*
+
+	reverse_proxy @api 127.0.0.1:8002
+	reverse_proxy 127.0.0.1:5173
+}

@@ -1,0 +1,13 @@
+taskKey,workerKey
+task-clinic-protection,worker-celina
+task-clinic-gases,worker-dawid
+task-clinic-electrical,worker-anna
+task-clinic-electrical,worker-bartek
+task-clinic-inspection,worker-hubert
+task-gym-tearoff,worker-ewa
+task-gym-membrane,worker-ewa
+task-gym-floor,worker-filip
+task-cold-isolate,worker-dawid
+task-cold-pipework,worker-hubert
+task-cold-dock,worker-gosia
+task-cold-commission,worker-anna

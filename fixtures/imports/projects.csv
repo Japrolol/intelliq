@@ -1,0 +1,6 @@
+externalKey,name,timezone,address,defaultLatitude,defaultLongitude,targetFinishAt,priority,description,status,currency,countryCode,timecueProjectId
+project-alpha,Powisle · Kamienica Dobra 56,Europe/Warsaw,"ul. Dobra 56, 00-312 Warszawa",52.2374,21.0295,2026-09-25T16:00:00+02:00,2,Occupied riverside tenement. Electrical rough-in is blocking wall closure and Friday handover.,scheduled,PLN,PL,
+project-beta,Wola · Hala Kolejowa 47,Europe/Warsaw,"ul. Kolejowa 47, 01-210 Warszawa",52.2300,20.9776,2026-09-26T16:00:00+02:00,1,Donor workshop retrofit holding scarce electricians and carpenters needed at Dobra 56.,scheduled,PLN,PL,
+project-gamma,Praga · Loft Zabkowska 27,Europe/Warsaw,"ul. Zabkowska 27, 03-736 Warszawa",52.2536,21.0375,2026-09-24T16:00:00+02:00,3,Control loft fit-out with rooftop HVAC and a fixed client walkthrough.,scheduled,PLN,PL,
+project-townhouse,Mokotow · Willa Pulawska 17,Europe/Warsaw,"ul. Pulawska 17, 02-515 Warszawa",52.2118,21.0219,2026-09-25T16:00:00+02:00,1,Occupied villa bathroom package. Client handover Friday 16:00; shares inspection and finishing with Dobra 56.,scheduled,PLN,PL,
+project-clinic,Ochota · Przychodnia Banacha 1A,Europe/Warsaw,"ul. Banacha 1A, 02-097 Warszawa",52.2058,20.9831,2026-09-24T16:00:00+02:00,2,Reception fit-out sharing the carpentry crew with the Wola workshop.,scheduled,PLN,PL,

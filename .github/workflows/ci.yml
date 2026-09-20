@@ -1,0 +1,68 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: intelliq-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  api:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: apps/api
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: astral-sh/setup-uv@v6
+        with:
+          version: '0.9.18'
+      - run: uv sync --frozen --extra test
+      - run: uv run --extra test ruff check src tests scripts
+      - run: uv run --extra test python -m pytest -q
+      - run: PYTHONPATH=. uv run python scripts/export_api_contracts.py --check
+      - run: uv run python -m compileall -q src tests scripts
+
+  frontend:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10.12.4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm --filter frontend lint
+      - run: pnpm --filter frontend build
+
+  compose:
+    runs-on: ubuntu-latest
+    env:
+      POSTGRES_DB: intelliq
+      POSTGRES_USER: intelliq
+      POSTGRES_PASSWORD: ci-only-not-a-secret
+      DATABASE_URL: postgresql+psycopg://intelliq:ci-only-not-a-secret@postgres:5432/intelliq
+      REDIS_URL: redis://redis:6379/0
+      DATA_MODE: live
+      TIMECUE_API_URL: http://timecue.invalid
+      JOBS_ENABLED: 'true'
+      SESSION_ENCRYPTION_KEY: ci-only-not-a-fernet-key
+      ALLOWED_ORIGINS: https://intelliq.example
+      APP_DOMAIN: intelliq.example
+    steps:
+      - uses: actions/checkout@v4
+      - run: docker compose -f compose.yaml config --quiet
+      - run: docker compose -f compose.production.yaml config --quiet
+      - run: docker build --file apps/api/Dockerfile --tag intelliq-api:ci .
+      - run: docker build --file apps/frontend/Dockerfile --tag intelliq-web:ci .

@@ -1,0 +1,9 @@
+externalKey,name,description,timecueSpecialtyId
+skill-electrical,Electrical,Isolated power and lighting,mock-specialty-electrical
+skill-carpentry,Carpentry,Protection and joinery,mock-specialty-carpentry
+skill-plumbing,Plumbing,Medical gas and wet services,mock-specialty-plumbing
+skill-hvac,HVAC,Refrigeration and ventilation,mock-specialty-hvac
+skill-roofing,Roofing,Membrane and flashing,mock-specialty-roofing
+skill-flooring,Flooring,Sports-floor installation,mock-specialty-flooring
+skill-concrete,Concrete,Slab and apron repair,mock-specialty-concrete
+skill-inspection,Inspection,Handover and commissioning,mock-specialty-inspection

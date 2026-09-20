@@ -1,0 +1,9 @@
+externalKey,timecueMemberId,skillKeys
+worker-01,da6e6087-4998-4400-a59a-3cc07b0f06bd,skill-electrical;skill-inspection;skill-carpentry;skill-plumbing;skill-finishing;skill-demolition;skill-tiling
+worker-02,f09267fb-d41c-470c-95e4-e951f0213670,skill-electrical
+worker-03,aa1e7384-21fd-4b47-b84f-bd0ce07aae3c,skill-carpentry;skill-finishing;skill-demolition
+worker-04,da6e6087-4998-4400-a59a-3cc07b0f06bd,skill-plumbing
+worker-05,f09267fb-d41c-470c-95e4-e951f0213670,skill-finishing;skill-tiling
+worker-06,aa1e7384-21fd-4b47-b84f-bd0ce07aae3c,skill-demolition
+worker-07,da6e6087-4998-4400-a59a-3cc07b0f06bd,skill-inspection
+worker-08,f09267fb-d41c-470c-95e4-e951f0213670,skill-inspection;skill-electrical

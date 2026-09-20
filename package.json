@@ -1,0 +1,33 @@
+{
+  "name": "intelliq",
+  "private": true,
+  "version": "0.1.0",
+  "packageManager": "pnpm@10.12.4",
+  "scripts": {
+    "dev": "docker compose up -d --wait postgres redis rustfs && trap 'docker compose stop postgres redis rustfs >/dev/null' EXIT INT TERM && pnpm dev:apps",
+    "dev:apps": "turbo dev",
+    "build": "turbo build",
+    "lint": "turbo lint",
+    "test": "turbo test",
+    "test:e2e": "turbo test:e2e",
+    "db:up": "docker compose up -d postgres redis",
+    "db:down": "docker compose stop postgres redis",
+    "db:status": "docker compose ps postgres redis",
+    "storage:up": "docker compose up -d --wait rustfs",
+    "storage:status": "docker compose ps rustfs",
+    "proxy:validate": "pnpm --filter reverse-proxy validate",
+    "proxy:fmt": "pnpm --filter reverse-proxy fmt",
+    "proxy:open": "open http://intelliq.localhost:8082",
+    "db:current": "pnpm --filter api db:current",
+    "db:migrate": "pnpm --filter api db:migrate",
+    "seed:timecue": "pnpm --filter api seed:timecue",
+    "seed:demo:reset": "./scripts/reset-and-seed-demo.sh",
+    "worker": "pnpm --filter worker dev",
+    "worker:test": "pnpm --filter worker test",
+    "deploy": "./scripts/deploy.sh",
+    "deploy:check": "./scripts/deploy.sh --check"
+  },
+  "devDependencies": {
+    "turbo": "^2.11.2"
+  }
+}

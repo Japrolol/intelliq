@@ -1,0 +1,11 @@
+{
+  "name": "worker",
+  "private": true,
+  "version": "0.1.0",
+  "scripts": {
+    "dev": "cd ../api && pnpm worker",
+    "build": "cd ../api && pnpm build",
+    "lint": "cd ../api && pnpm lint",
+    "test": "cd ../api && PYTHONPATH=. uv run --extra test python -m pytest tests/test_runtime_workers.py -q"
+  }
+}

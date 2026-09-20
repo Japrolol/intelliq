@@ -1,0 +1,119 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "@fontsource-variable/geist";
+
+/* shadcn Nova / neutral, with the Timecue brand as the primary action color. */
+:root {
+  --background: #faf9f6;
+  --foreground: #1f2933;
+  --card: #ffffff;
+  --card-foreground: #1f2933;
+  --popover: #ffffff;
+  --popover-foreground: #1f2933;
+  --primary: #b65f34;
+  --primary-foreground: #ffffff;
+  --secondary: #f1eee7;
+  --secondary-foreground: #1f2933;
+  --muted: #f1eee7;
+  --muted-foreground: #667085;
+  --accent: #f1eee7;
+  --accent-foreground: #1f2933;
+  --destructive: #c94a3f;
+  --border: #e5e1d8;
+  --input: #d9d4c7;
+  --ring: #b65f34;
+  --chart-1: #b65f34;
+  --chart-2: #2f7d57;
+  --chart-3: #667085;
+  --chart-4: #c58a18;
+  --chart-5: #1f2933;
+  --radius: 0.625rem;
+}
+
+@theme inline {
+  --font-sans: "Geist Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Geist Variable", ui-sans-serif, system-ui, sans-serif;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply m-0 bg-background font-sans text-sm text-foreground antialiased;
+    font-feature-settings:
+      "ss01" 1,
+      "cv11" 1;
+  }
+  h1 {
+    @apply text-2xl font-semibold tracking-tight;
+  }
+  h2 {
+    @apply text-base font-semibold tracking-tight;
+  }
+  h3 {
+    @apply text-sm font-semibold;
+  }
+  small {
+    @apply text-xs text-muted-foreground;
+  }
+  summary {
+    @apply cursor-pointer font-medium;
+  }
+  details[open] > summary {
+    @apply mb-5;
+  }
+  blockquote {
+    @apply border-l-2 border-primary/30 pl-4 text-sm leading-relaxed text-muted-foreground;
+  }
+}
+
+@layer components {
+  .eyebrow {
+    @apply text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-muted-foreground;
+  }
+
+  .decision-hero {
+    isolation: isolate;
+  }
+
+  .decision-hero-glow {
+    @apply pointer-events-none absolute -right-24 -bottom-32 size-80 rounded-full bg-primary/10 blur-3xl;
+  }
+
+  .option-card {
+    @apply min-h-80 rounded-2xl border border-border bg-card p-5 transition duration-200 hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-lg hover:shadow-foreground/5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring sm:p-6;
+  }
+
+  .option-card-selected {
+    @apply border-primary/60 bg-primary/[0.035] shadow-[0_18px_50px_-34px_rgba(85,56,35,0.6)];
+  }
+
+  .font-display {
+    font-family: var(--font-display);
+  }
+}

@@ -1,0 +1,12 @@
+externalKey,projectKey,title,plannedStart,plannedEnd,description,status,estimatedMinutes,workType,weatherRulesJson,weatherCoverage,timecueTaskId
+task-clinic-protection,project-harbor-clinic,Site protection,2026-09-21T08:00:00+02:00,2026-09-21T16:00:00+02:00,Install dust walls and floor protection in the outpatient wing,planned,480,carpentry,,synthetic_demo_mock,
+task-clinic-gases,project-harbor-clinic,Medical gas rough-in,2026-09-22T08:00:00+02:00,2026-09-23T16:00:00+02:00,Run medical gas lines before wall closure,planned,960,plumbing,,synthetic_demo_mock,
+task-clinic-electrical,project-harbor-clinic,Clean-room electrical,2026-09-23T08:00:00+02:00,2026-09-24T16:00:00+02:00,Install isolated power and lighting in treatment rooms,in_progress,960,electrical,,synthetic_demo_mock,
+task-clinic-inspection,project-harbor-clinic,Infection-control inspection,2026-09-25T08:00:00+02:00,2026-09-25T12:00:00+02:00,Inspect finishes and medical-gas labeling before handover,planned,240,inspection,,synthetic_demo_mock,
+task-gym-tearoff,project-school-gym,Roof tear-off,2026-09-21T08:00:00+02:00,2026-09-21T16:00:00+02:00,Strip the failed gym roof covering,planned,480,roofing,,synthetic_demo_mock,
+task-gym-membrane,project-school-gym,Roof membrane,2026-09-22T08:00:00+02:00,2026-09-23T16:00:00+02:00,Install membrane flashing and roof insulation,planned,960,roofing,,synthetic_demo_mock,
+task-gym-floor,project-school-gym,Sports floor,2026-09-24T08:00:00+02:00,2026-09-25T16:00:00+02:00,Lay the sprung sports floor after the roof is weathertight,planned,960,flooring,,synthetic_demo_mock,
+task-cold-isolate,project-cold-store,Plant isolation,2026-09-21T08:00:00+02:00,2026-09-21T16:00:00+02:00,Isolate the refrigeration plant for the retrofit window,planned,480,hvac,,synthetic_demo_mock,
+task-cold-pipework,project-cold-store,Pipework and insulation,2026-09-22T08:00:00+02:00,2026-09-23T16:00:00+02:00,Replace plant pipework and cold insulation,planned,960,hvac,,synthetic_demo_mock,
+task-cold-dock,project-cold-store,Loading-dock slab,2026-09-24T08:00:00+02:00,2026-09-24T16:00:00+02:00,Repair the loading-bay concrete apron,planned,480,concrete,,synthetic_demo_mock,
+task-cold-commission,project-cold-store,Plant commissioning,2026-09-25T08:00:00+02:00,2026-09-25T12:00:00+02:00,Commission refrigeration after pipework,planned,240,inspection,,synthetic_demo_mock,

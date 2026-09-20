@@ -1,0 +1,10 @@
+{
+  "name": "reverse-proxy",
+  "private": true,
+  "version": "0.1.0",
+  "scripts": {
+    "dev": "caddy run --config Caddyfile --adapter caddyfile",
+    "validate": "caddy validate --config Caddyfile --adapter caddyfile",
+    "fmt": "caddy fmt --overwrite Caddyfile"
+  }
+}

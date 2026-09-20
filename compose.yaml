@@ -1,0 +1,54 @@
+services:
+  rustfs:
+    image: rustfs/rustfs@sha256:fa19210ac4697c79d7ccca1ec9b0eb91aebacc6691991ffb14014bb3c67e6cc3
+    environment:
+      RUSTFS_ACCESS_KEY: ${S3_ACCESS_KEY_ID:-INTELLIQLOCAL}
+      RUSTFS_SECRET_KEY: ${S3_SECRET_ACCESS_KEY:-intelliq-local-storage-only}
+      RUSTFS_CONSOLE_ENABLE: "true"
+    command: ["/data"]
+    ports:
+      - "127.0.0.1:19000:9000"
+      - "127.0.0.1:19001:9001"
+    volumes:
+      - intelliq-rustfs-data:/data
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000/health"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+      start_period: 15s
+  postgres:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-intelliq}
+      POSTGRES_USER: ${POSTGRES_USER:-intelliq}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-intelliq_dev_only}
+    ports:
+      - "127.0.0.1:5434:5432"
+    volumes:
+      - intelliq-postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 5s
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "127.0.0.1:6381:6379"
+    volumes:
+      - intelliq-redis-data:/data
+    command: ["redis-server", "--appendonly", "yes"]
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 5s
+
+volumes:
+  intelliq-rustfs-data:
+  intelliq-postgres-data:
+  intelliq-redis-data:

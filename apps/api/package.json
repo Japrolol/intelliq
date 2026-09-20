@@ -1,0 +1,15 @@
+{
+  "name": "api",
+  "private": true,
+  "version": "0.1.0",
+  "scripts": {
+    "dev": "PYTHONPATH=. uv run python -m uvicorn src.app.main:app --host 127.0.0.1 --port 8002 --reload",
+    "worker": "PYTHONPATH=. uv run python -m arq src.app.workers.worker.WorkerSettings",
+    "build": "PYTHONPATH=. uv run python -m compileall -q src tests scripts",
+    "db:current": "PYTHONPATH=. uv run python -m alembic -c alembic.ini current",
+    "db:migrate": "PYTHONPATH=. uv run python -m alembic -c alembic.ini upgrade head",
+    "seed:timecue": "PYTHONPATH=. uv run python scripts/seed_timecue_demo.py",
+    "lint": "PYTHONPATH=. uv run --extra test ruff check src tests scripts",
+    "test": "PYTHONPATH=. uv run --extra test python -m pytest"
+  }
+}

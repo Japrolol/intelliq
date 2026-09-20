@@ -1,0 +1,13 @@
+assumptionType,taskKey,projectKey,fromProjectKey,toProjectKey,workerKey,optimisticPersonHours,mostLikelyPersonHours,pessimisticPersonHours,prerequisiteKeys,specialtyKeys,minCrew,maxCrew,target,priority,outboundTravelHours,returnTravelHours,setupHours,startsAt,endsAt,transferConfirmed
+task,task-clinic-protection,project-harbor-clinic,,,,4,8,12,,skill-carpentry,1,2,,2,,,,,,
+task,task-clinic-gases,project-harbor-clinic,,,,12,16,22,task-clinic-protection,skill-plumbing,1,2,,2,,,,,,
+task,task-clinic-electrical,project-harbor-clinic,,,,12,16,24,task-clinic-gases,skill-electrical,1,2,,1,,,,,,
+task,task-clinic-inspection,project-harbor-clinic,,,,2,4,6,task-clinic-electrical,skill-inspection,1,1,,3,,,,,,
+task,task-gym-tearoff,project-school-gym,,,,4,8,12,,skill-roofing,1,2,,2,,,,,,
+task,task-gym-membrane,project-school-gym,,,,12,16,22,task-gym-tearoff,skill-roofing,1,2,,1,,,,,,
+task,task-gym-floor,project-school-gym,,,,12,16,24,task-gym-membrane,skill-flooring,1,2,,1,,,,,,
+task,task-cold-isolate,project-cold-store,,,,4,8,12,,skill-hvac,1,1,,2,,,,,,
+task,task-cold-pipework,project-cold-store,,,,12,16,22,task-cold-isolate,skill-hvac,1,2,,1,,,,,,
+task,task-cold-dock,project-cold-store,,,,4,8,12,,skill-concrete,1,2,,2,,,,,,
+task,task-cold-commission,project-cold-store,,,,2,4,6,task-cold-pipework,skill-inspection,1,1,,3,,,,,,
+transfer,,,project-harbor-clinic,project-school-gym,worker-bartek,,,,,,,,,,4.5,4.5,1,2026-09-23T16:00:00+02:00,2026-09-24T08:00:00+02:00,true

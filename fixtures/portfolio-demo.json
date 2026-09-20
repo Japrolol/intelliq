@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 1,
+  "sourceMode": "fixture",
+  "organizationId": "demo-org",
+  "asOf": "2026-09-21T08:00:00+02:00",
+  "horizonDays": 14,
+  "seed": 20260919,
+  "samples": 100,
+  "targetProjectId": "alpha",
+  "projects": [
+    {
+      "id": "alpha",
+      "name": "Alpha · Riverside Apartments",
+      "targetFinishAt": "2026-09-22T16:00:00+02:00",
+      "priority": 2,
+      "timezone": "Europe/Warsaw"
+    },
+    {
+      "id": "beta",
+      "name": "Beta · Workshop Renovation",
+      "targetFinishAt": "2026-09-23T16:00:00+02:00",
+      "priority": 1,
+      "timezone": "Europe/Warsaw"
+    },
+    {
+      "id": "gamma",
+      "name": "Gamma · Office Fit-out",
+      "targetFinishAt": "2026-09-22T16:00:00+02:00",
+      "priority": 1,
+      "timezone": "Europe/Warsaw"
+    }
+  ],
+  "tasks": [
+    {
+      "id": "a1",
+      "projectId": "alpha",
+      "title": "Electrical installation",
+      "status": "in_progress",
+      "predecessorIds": [],
+      "requiredSpecialtyId": "electrical",
+      "remainingPersonHours": {"optimistic": 24, "mostLikely": 24, "pessimistic": 24},
+      "minCrew": 1,
+      "maxCrew": 2,
+      "earliestStartAt": "2026-09-21T08:00:00+02:00"
+    },
+    {
+      "id": "a2",
+      "projectId": "alpha",
+      "title": "Wall closure",
+      "status": "planned",
+      "predecessorIds": ["a1"],
+      "requiredSpecialtyId": "carpentry",
+      "remainingPersonHours": {"optimistic": 8, "mostLikely": 8, "pessimistic": 8},
+      "minCrew": 1,
+      "maxCrew": 1,
+      "earliestStartAt": "2026-09-21T08:00:00+02:00"
+    },
+    {
+      "id": "b1",
+      "projectId": "beta",
+      "title": "Electrical fit-out",
+      "status": "assigned",
+      "predecessorIds": [],
+      "requiredSpecialtyId": "electrical",
+      "remainingPersonHours": {"optimistic": 16, "mostLikely": 16, "pessimistic": 16},
+      "minCrew": 1,
+      "maxCrew": 1,
+      "earliestStartAt": "2026-09-21T08:00:00+02:00"
+    },
+    {
+      "id": "g1",
+      "projectId": "gamma",
+      "title": "Interior inspection",
+      "status": "assigned",
+      "predecessorIds": [],
+      "requiredSpecialtyId": "inspection",
+      "remainingPersonHours": {"optimistic": 8, "mostLikely": 8, "pessimistic": 8},
+      "minCrew": 1,
+      "maxCrew": 1,
+      "earliestStartAt": "2026-09-21T08:00:00+02:00"
+    }
+  ],
+  "workers": [
+    {"id": "ea", "name": "Electrician A", "specialtyIds": ["electrical"], "homeProjectId": "alpha", "workingWeekdays": [0, 1, 2, 3, 4], "shiftStart": "08:00", "shiftEnd": "16:00", "canTransfer": true},
+    {"id": "eb", "name": "Electrician B", "specialtyIds": ["electrical"], "homeProjectId": "beta", "workingWeekdays": [0, 1, 2, 3, 4], "shiftStart": "08:00", "shiftEnd": "16:00", "canTransfer": true},
+    {"id": "ca", "name": "Carpenter A", "specialtyIds": ["carpentry"], "homeProjectId": "alpha", "workingWeekdays": [0, 1, 2, 3, 4], "shiftStart": "08:00", "shiftEnd": "16:00", "canTransfer": false},
+    {"id": "ia", "name": "Inspector A", "specialtyIds": ["inspection"], "homeProjectId": "gamma", "workingWeekdays": [0, 1, 2, 3, 4], "shiftStart": "08:00", "shiftEnd": "16:00", "canTransfer": false}
+  ],
+  "reservations": [],
+  "transferAssumptions": [
+    {"fromProjectId": "beta", "toProjectId": "alpha", "outboundTravelHours": 0, "returnTravelHours": 0, "setupHours": 0}
+  ],
+  "worklogs": [
+    {"id": "demo-worklog-1", "projectId": "alpha", "taskId": "a2", "workDate": "2026-09-21", "knownAt": "2026-09-21T08:00:00+02:00", "description": "We cannot close the walls because the electrical installation is unfinished. The cables have already arrived."}
+  ]
+}

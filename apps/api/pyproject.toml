@@ -1,0 +1,40 @@
+[project]
+name = "intelliq-backend"
+version = "0.1.0"
+description = "FastAPI backend-for-frontend for the IntelliQ decision layer"
+requires-python = ">=3.12"
+dependencies = [
+  "boto3>=1.36,<2",
+  "fastapi>=0.115,<1",
+  "alembic>=1.14,<2",
+  "arq>=0.26,<1",
+  "cryptography>=43,<47",
+  "httpx>=0.27,<1",
+  "openpyxl>=3.1,<4",
+  "Pillow>=10,<13",
+  "pydantic>=2.8,<3",
+  "pydantic-settings>=2.4,<3",
+  "psycopg[binary]>=3.2,<4",
+  "python-multipart>=0.0.9,<1",
+  "sqlalchemy>=2.0,<3",
+  "uvicorn[standard]>=0.30,<1",
+  "pypdf>=5,<7",
+]
+
+[project.optional-dependencies]
+test = [
+  "pytest>=8,<9",
+  "ruff>=0.6,<1",
+]
+
+[tool.pytest.ini_options]
+pythonpath = [".."]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+ignore = ["B008"]

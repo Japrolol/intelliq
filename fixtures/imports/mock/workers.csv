@@ -1,0 +1,9 @@
+externalKey,timecueMemberId,skillKeys
+worker-anna,mock-member-anna,skill-electrical;skill-inspection
+worker-bartek,mock-member-bartek,skill-electrical
+worker-celina,mock-member-celina,skill-carpentry
+worker-dawid,mock-member-dawid,skill-plumbing;skill-hvac
+worker-ewa,mock-member-ewa,skill-roofing
+worker-filip,mock-member-filip,skill-flooring
+worker-gosia,mock-member-gosia,skill-concrete
+worker-hubert,mock-member-hubert,skill-inspection;skill-hvac

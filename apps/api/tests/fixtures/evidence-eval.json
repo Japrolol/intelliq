@@ -1,0 +1,461 @@
+{
+  "description": "Small hand-labelled corpus for the current local evidence extractor. Counts are corpus-only and are not a production accuracy claim.",
+  "notes": [
+    {
+      "id": "asserted-01",
+      "label": "asserted_blocker",
+      "text": "A2 is blocked because the electrical inspection is unfinished.",
+      "sourceId": "eval-asserted-01",
+      "sourceRevision": "eval-rev-001",
+      "sourceKind": "worklog_description",
+      "projectId": "alpha",
+      "taskId": "A2",
+      "canonicalTaskIds": ["A1", "A2", "B1"],
+      "expected": {
+        "observationCount": 1,
+        "kind": "dependency_blocker",
+        "assertion": "reported",
+        "reportedState": "active",
+        "linkedTaskId": "A2",
+        "relatedTaskCandidateIds": []
+      }
+    },
+    {
+      "id": "asserted-02",
+      "label": "asserted_blocker",
+      "text": "The roof crew is waiting for the steel delivery before framing can start.",
+      "sourceId": "eval-asserted-02",
+      "sourceRevision": "eval-rev-002",
+      "sourceKind": "worklog_description",
+      "projectId": "alpha",
+      "taskId": "A1",
+      "canonicalTaskIds": ["A1", "A2", "B1"],
+      "expected": {
+        "observationCount": 1,
+        "kind": "material_wait",
+        "assertion": "reported",
+        "reportedState": "active",
+        "linkedTaskId": "A1",
+        "relatedTaskCandidateIds": []
+      }
+    },
+    {
+      "id": "asserted-03",
+      "label": "asserted_blocker",
+      "text": "B1 cannot close the walls while the access route is not ready.",
+      "sourceId": "eval-asserted-03",
+      "sourceRevision": "eval-rev-003",
+      "sourceKind": "worklog_description",
+      "projectId": "beta",
+      "taskId": "B1",
+      "canonicalTaskIds": ["A1", "A2", "B1"],
+      "expected": {
+        "observationCount": 1,
+        "kind": "dependency_blocker",
+        "assertion": "reported",
+        "reportedState": "active",
+        "linkedTaskId": "B1",
+        "relatedTaskCandidateIds": []
+      }
+    },
+    {
+      "id": "asserted-04",
+      "label": "asserted_blocker",
+      "text": "The west stair work is delayed because site access is blocked.",
+      "sourceId": "eval-asserted-04",
+      "sourceRevision": "eval-rev-004",
+      "sourceKind": "worklog_description",
+      "projectId": "beta",
+      "taskId": "B2",
+      "canonicalTaskIds": ["B1", "B2", "C1"],
+      "expected": {
+        "observationCount": 1,
+        "kind": "dependency_blocker",
+        "assertion": "reported",
+        "reportedState": "active",
+        "linkedTaskId": "B2",
+        "relatedTaskCandidateIds": []
+      }
+    },
+    {
+      "id": "asserted-05",
+      "label": "asserted_blocker",
+      "text": "We cannot close the walls; the electrical installation is unfinished.",
+      "sourceId": "eval-asserted-05",
+      "sourceRevision": "eval-rev-005",
+      "sourceKind": "worklog_description",
+      "projectId": "gamma",
+      "taskId": "C1",
+      "canonicalTaskIds": ["A1", "B1", "C1"],
+      "expected": {
+        "observationCount": 1,
+        "kind": "dependency_blocker",
+        "assertion": "reported",
+        "reportedState": "active",
+        "linkedTaskId": "C1",
+        "relatedTaskCandidateIds": []
+      }
+    },
+    {
+      "id": "resolved-01",
+      "label": "resolved",
+      "text": "The concrete delivery has arrived and the material wait is resolved.",
+      "sourceId": "eval-resolved-01",
+      "sourceRevision": "eval-rev-006",
+      "sourceKind": "worklog_description",
+      "projectId": "alpha",
+      "taskId": "A1",
+      "canonicalTaskIds": ["A1", "A2"],
+      "expected": {
+        "observationCount": 1,
+        "kind": "resolution",
+        "assertion": "reported",
+        "reportedState": "resolved",
+        "linkedTaskId": "A1",
+        "relatedTaskCandidateIds": []
+      }
+    },
+    {
+      "id": "resolved-02",
+      "label": "resolved",
+      "text": "The access issue is fixed and the crew is no longer blocked.",
+      "sourceId": "eval-resolved-02",
+      "sourceRevision": "eval-rev-007",
+      "sourceKind": "worklog_description",
+      "projectId": "beta",
+      "taskId": "B2",
+      "canonicalTaskIds": ["B1", "B2"],
+      "expected": {
+        "observationCount": 1,
+        "kind": "resolution",
+        "assertion": "reported",
+        "reportedState": "resolved",
+        "linkedTaskId": "B2",
+        "relatedTaskCandidateIds": []
+      }
+    },
+    {
+      "id": "resolved-03",
+      "label": "resolved",
+      "text": "The inspection was completed, so the permit hold is cleared.",
+      "sourceId": "eval-resolved-03",
+      "sourceRevision": "eval-rev-008",
+      "sourceKind": "worklog_description",
+      "projectId": "gamma",
+      "taskId": "C1",
+      "canonicalTaskIds": ["C1", "C2"],
+      "expected": {
+        "observationCount": 1,
+        "kind": "resolution",
+        "assertion": "reported",
+        "reportedState": "resolved",
+        "linkedTaskId": "C1",
+        "relatedTaskCandidateIds": []
+      }
+    },
+    {
+      "id": "resolved-04",
+      "label": "resolved",
+      "text": "The missing windows were delivered, so the material wait is cleared.",
+      "sourceId": "eval-resolved-04",
+      "sourceRevision": "eval-rev-009",
+      "sourceKind": "worklog_description",
+      "projectId": "gamma",
+      "taskId": "C2",
+      "canonicalTaskIds": ["C1", "C2"],
+      "expected": {
+        "observationCount": 1,
+        "kind": "resolution",
+        "assertion": "reported",
+        "reportedState": "resolved",
+        "linkedTaskId": "C2",
+        "relatedTaskCandidateIds": []
+      }
+    },
+    {
+      "id": "negated-01",
+      "label": "negated",
+      "text": "There is no delay on A1.",
+      "sourceId": "eval-negated-01",
+      "sourceRevision": "eval-rev-010",
+      "sourceKind": "worklog_description",
+      "projectId": "alpha",
+      "taskId": "A1",
+      "canonicalTaskIds": ["A1", "A2"],
+      "expected": {
+        "observationCount": 1,
+        "kind": "reported_slow_progress",
+        "assertion": "negated",
+        "reportedState": "unknown",
+        "linkedTaskId": "A1",
+        "relatedTaskCandidateIds": []
+      }
+    },
+    {
+      "id": "negated-02",
+      "label": "negated",
+      "text": "The crew is not blocked by weather today.",
+      "sourceId": "eval-negated-02",
+      "sourceRevision": "eval-rev-011",
+      "sourceKind": "worklog_description",
+      "projectId": "beta",
+      "taskId": "B1",
+      "canonicalTaskIds": ["B1", "B2"],
+      "expected": {
+        "observationCount": 1,
+        "kind": "weather_disruption",
+        "assertion": "negated",
+        "reportedState": "unknown",
+        "linkedTaskId": "B1",
+        "relatedTaskCandidateIds": []
+      }
+    },
+    {
+      "id": "negated-03",
+      "label": "negated",
+      "text": "There is no delay; the door delivery is not late.",
+      "sourceId": "eval-negated-03",
+      "sourceRevision": "eval-rev-012",
+      "sourceKind": "worklog_description",
+      "projectId": "gamma",
+      "taskId": "C2",
+      "canonicalTaskIds": ["C1", "C2"],
+      "expected": {
+        "observationCount": 1,
+        "kind": "material_wait",
+        "assertion": "negated",
+        "reportedState": "unknown",
+        "linkedTaskId": "C2",
+        "relatedTaskCandidateIds": []
+      }
+    },
+    {
+      "id": "hypothetical-01",
+      "label": "hypothetical",
+      "text": "If rain continues, the crew could be delayed tomorrow.",
+      "sourceId": "eval-hypothetical-01",
+      "sourceRevision": "eval-rev-013",
+      "sourceKind": "worklog_description",
+      "projectId": "alpha",
+      "taskId": "A2",
+      "canonicalTaskIds": ["A1", "A2"],
+      "expected": {
+        "observationCount": 1,
+        "kind": "weather_disruption",
+        "assertion": "hypothetical",
+        "reportedState": "unknown",
+        "linkedTaskId": "A2",
+        "relatedTaskCandidateIds": []
+      }
+    },
+    {
+      "id": "hypothetical-02",
+      "label": "hypothetical",
+      "text": "The wall closure might be blocked unless the inspection passes.",
+      "sourceId": "eval-hypothetical-02",
+      "sourceRevision": "eval-rev-014",
+      "sourceKind": "worklog_description",
+      "projectId": "beta",
+      "taskId": "B1",
+      "canonicalTaskIds": ["B1", "B2"],
+      "expected": {
+        "observationCount": 1,
+        "kind": "dependency_blocker",
+        "assertion": "hypothetical",
+        "reportedState": "unknown",
+        "linkedTaskId": "B1",
+        "relatedTaskCandidateIds": []
+      }
+    },
+    {
+      "id": "hypothetical-03",
+      "label": "hypothetical",
+      "text": "If the lift is late, we need a worker for the roof crew.",
+      "sourceId": "eval-hypothetical-03",
+      "sourceRevision": "eval-rev-015",
+      "sourceKind": "worklog_description",
+      "projectId": "gamma",
+      "taskId": "C1",
+      "canonicalTaskIds": ["C1", "C2"],
+      "expected": {
+        "observationCount": 1,
+        "kind": "resource_constraint",
+        "assertion": "hypothetical",
+        "reportedState": "unknown",
+        "linkedTaskId": "C1",
+        "relatedTaskCandidateIds": []
+      }
+    },
+    {
+      "id": "historical-01",
+      "label": "historical",
+      "text": "Yesterday the crew was waiting for steel.",
+      "sourceId": "eval-historical-01",
+      "sourceRevision": "eval-rev-016",
+      "sourceKind": "worklog_description",
+      "projectId": "alpha",
+      "taskId": "A1",
+      "canonicalTaskIds": ["A1", "A2"],
+      "expected": {
+        "observationCount": 1,
+        "kind": "material_wait",
+        "assertion": "reported",
+        "reportedState": "historical",
+        "linkedTaskId": "A1",
+        "relatedTaskCandidateIds": []
+      }
+    },
+    {
+      "id": "historical-02",
+      "label": "historical",
+      "text": "The team was behind last week because the site was muddy.",
+      "sourceId": "eval-historical-02",
+      "sourceRevision": "eval-rev-017",
+      "sourceKind": "worklog_description",
+      "projectId": "beta",
+      "taskId": "B2",
+      "canonicalTaskIds": ["B1", "B2"],
+      "expected": {
+        "observationCount": 1,
+        "kind": "weather_disruption",
+        "assertion": "reported",
+        "reportedState": "historical",
+        "linkedTaskId": "B2",
+        "relatedTaskCandidateIds": []
+      }
+    },
+    {
+      "id": "historical-03",
+      "label": "historical",
+      "text": "Earlier, the permit was blocked by a missing signature.",
+      "sourceId": "eval-historical-03",
+      "sourceRevision": "eval-rev-018",
+      "sourceKind": "worklog_description",
+      "projectId": "gamma",
+      "taskId": "C1",
+      "canonicalTaskIds": ["C1", "C2"],
+      "expected": {
+        "observationCount": 1,
+        "kind": "dependency_blocker",
+        "assertion": "reported",
+        "reportedState": "historical",
+        "linkedTaskId": "C1",
+        "relatedTaskCandidateIds": []
+      }
+    },
+    {
+      "id": "ambiguous-01",
+      "label": "ambiguous_unlinked",
+      "text": "Waiting for the electrician before wall closure.",
+      "sourceId": "eval-ambiguous-01",
+      "sourceRevision": "eval-rev-019",
+      "sourceKind": "worklog_description",
+      "projectId": "alpha",
+      "taskId": null,
+      "canonicalTaskIds": ["A1", "A2"],
+      "expected": {
+        "observationCount": 1,
+        "kind": "dependency_blocker",
+        "assertion": "reported",
+        "reportedState": "active",
+        "linkedTaskId": null,
+        "relatedTaskCandidateIds": []
+      }
+    },
+    {
+      "id": "ambiguous-02",
+      "label": "ambiguous_unlinked",
+      "text": "The delivery for A1 is late.",
+      "sourceId": "eval-ambiguous-02",
+      "sourceRevision": "eval-rev-020",
+      "sourceKind": "worklog_description",
+      "projectId": "beta",
+      "taskId": null,
+      "canonicalTaskIds": ["A1", "B1"],
+      "expected": {
+        "observationCount": 1,
+        "kind": "material_wait",
+        "assertion": "reported",
+        "reportedState": "active",
+        "linkedTaskId": null,
+        "relatedTaskCandidateIds": ["A1"]
+      }
+    },
+    {
+      "id": "ambiguous-03",
+      "label": "ambiguous_unlinked",
+      "text": "Two days of work are remaining on the north wing.",
+      "sourceId": "eval-ambiguous-03",
+      "sourceRevision": "eval-rev-021",
+      "sourceKind": "worklog_description",
+      "projectId": "gamma",
+      "taskId": null,
+      "canonicalTaskIds": ["C1", "C2"],
+      "expected": {
+        "observationCount": 1,
+        "kind": "remaining_work_report",
+        "assertion": "reported",
+        "reportedState": "active",
+        "linkedTaskId": null,
+        "relatedTaskCandidateIds": []
+      }
+    },
+    {
+      "id": "ambiguous-04",
+      "label": "ambiguous_unlinked",
+      "text": "The crew is behind.",
+      "sourceId": "eval-ambiguous-04",
+      "sourceRevision": "eval-rev-022",
+      "sourceKind": "worklog_description",
+      "projectId": "alpha",
+      "taskId": null,
+      "canonicalTaskIds": ["A1", "A2"],
+      "expected": {
+        "observationCount": 1,
+        "kind": "reported_slow_progress",
+        "assertion": "reported",
+        "reportedState": "active",
+        "linkedTaskId": null,
+        "relatedTaskCandidateIds": []
+      }
+    },
+    {
+      "id": "no-signal-01",
+      "label": "no_signal",
+      "text": "The team reviewed the drawings this morning.",
+      "sourceId": "eval-no-signal-01",
+      "sourceRevision": "eval-rev-023",
+      "sourceKind": "worklog_description",
+      "projectId": "beta",
+      "taskId": "B1",
+      "canonicalTaskIds": ["B1", "B2"],
+      "expected": {
+        "observationCount": 0,
+        "kind": null,
+        "assertion": null,
+        "reportedState": null,
+        "linkedTaskId": null,
+        "relatedTaskCandidateIds": []
+      }
+    },
+    {
+      "id": "no-signal-02",
+      "label": "no_signal",
+      "text": "Client walkthrough is booked for Friday.",
+      "sourceId": "eval-no-signal-02",
+      "sourceRevision": "eval-rev-024",
+      "sourceKind": "worklog_description",
+      "projectId": "gamma",
+      "taskId": "C2",
+      "canonicalTaskIds": ["C1", "C2"],
+      "expected": {
+        "observationCount": 0,
+        "kind": null,
+        "assertion": null,
+        "reportedState": null,
+        "linkedTaskId": null,
+        "relatedTaskCandidateIds": []
+      }
+    }
+  ]
+}
